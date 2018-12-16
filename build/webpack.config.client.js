@@ -1,38 +1,20 @@
 const path = require('path')
 const HTMLWebpackPlugin = require('html-webpack-plugin')
 const webpack = require('webpack')
+const webpackMerge = require('webpack-merge')
+const baseConfig = require('./webpack.base')
 
 // 判断当前执行环境
 const isDev = process.env.NODE_ENV === 'development'
 
-const config = {
+const config = webpackMerge(baseConfig, {
   entry: {
     app: path.join(__dirname, '../client/index.js')
   },
   output: {
-    filename: '[name].[hash].js',
-    path: path.join(__dirname, '../dist'),
-    publicPath: '/public/'
+    filename: '[name].[hash].js'
   },
-  module: {
-    rules: [{
-      enforce: 'pre',
-      test: /.(js|jsx)$/,
-      loader: 'eslint-loader',
-      exclude: [
-        path.resolve(__dirname, '../node_modules')
-      ]
-    }, {
-      test: /.jsx$/,
-      loader: 'babel-loader'
-    }, {
-      test: /.js$/,
-      loader: 'babel-loader',
-      exclude: [
-        path.join(__dirname, '../node_modules')
-      ]
-    }]
-  },
+
   // 使用template模板
   plugins: [
     new HTMLWebpackPlugin({
@@ -40,7 +22,7 @@ const config = {
     })
   ]
 
-}
+})
 
 // 如果是开发环境 增加配置
 if (isDev) {

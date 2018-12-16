@@ -1,13 +1,17 @@
 const express = require('express')
 const ReactSSR = require('react-dom/server')
+const favicon = require('serve-favicon')
 
 const fs = require('fs')
 // 引用文件最好使用绝对路径
 const path = require('path')
 // 判断当前执行环境
 const isDev = process.env.NODE_ENV === 'development'
+console.log('process2.env.NODE_ENV:', process.env.NODE_ENV)
 
 const app = express()
+
+app.use(favicon(path.join(__dirname, '../favicon.ico')))
 
 // 如果不是开发环境
 if (!isDev) {
