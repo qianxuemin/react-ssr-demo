@@ -17,7 +17,7 @@ const getTemplate = () => {
   })
 }
 const Module = module.constructor
-// 在内存中读写文件 而不是对硬盘操作
+// 在内存中读写文件 而不是对硬盘操作 提高速度
 const mfs = new MemoryFs()
 // 通过读取webpack打包的结果获取server端bundle
 const serverCompiler = webpack(serverConfig)

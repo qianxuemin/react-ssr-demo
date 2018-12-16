@@ -1,11 +1,12 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-import App from './App.jsx'
-import { AppContainer } from 'react-hot-loader'
+import App from './App.jsx'// eslint-disable-line
+
+import { AppContainer } from 'react-hot-loader'// eslint-disable-line
 
 // 热更新组件包裹
 const root = document.getElementById('root')
-const render = Component => {
+const render = (Component) => {
   ReactDOM.hydrate(
     <AppContainer>
       <Component />
@@ -22,7 +23,8 @@ render(App)
 if (module.hot) {
   module.hot.accept('./App.jsx', () => {
     // commonjs2 规范
-    const NextApp = require('./App.jsx').default
+    const NextApp = require('./App.jsx').default // eslint-disable-line
+
     // ReactDOM.hydrate(<NextApp />, document.getElementById('root'))
     render(NextApp)
   })
