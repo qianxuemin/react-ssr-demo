@@ -44,6 +44,9 @@ if (isDev) {
     publicPath: '/public', // 表明访问静态资源都要通过/public
     historyApiFallback: {
       index: '/public/index.html'
+    },
+    proxy: {
+      '/api': 'http://localhost:3333'
     }
   }
 

@@ -19,7 +19,9 @@
     "jsx-quotes":[0],
     "padded-blocks":[0],
     "no-trailing-spaces":[0],
-    "lines-between-class-members":[0]
+    "lines-between-class-members":[0],
+    "no-console":[0],
+    "react/require-default-props":[0]
 
   }
 }
