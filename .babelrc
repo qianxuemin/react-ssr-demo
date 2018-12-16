@@ -1,0 +1,7 @@
+{
+    "presets":[
+        ["es2015",{"loose":true}], // 松散的 非严格
+        "react"
+    ],
+    "plugins":["react-hot-loader/babel"] // 使用babel的情况下使用热更新的功能
+}

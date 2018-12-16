@@ -1,0 +1,8 @@
+.DS_Store
+node_modules
+log
+src/client/.mix
+dist
+package-lock.json
+.idea/
+.idea
