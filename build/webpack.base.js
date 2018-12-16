@@ -5,6 +5,9 @@ module.exports = {
     path: path.join(__dirname, '../dist'),
     publicPath: '/public/' // 用于区分返回静态资源还是服务端渲染的代码
   },
+  resolve: {
+    extensions: ['.js', '.jsx']
+  },
   module: {
     rules: [{
       enforce: 'pre',
