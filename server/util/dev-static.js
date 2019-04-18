@@ -16,11 +16,13 @@ const getTemplate = () => {
       .catch(reject)
   })
 }
+// 用于将string 转为 module
 const Module = module.constructor
 // 在内存中读写文件 而不是对硬盘操作 提高速度
 const mfs = new MemoryFs()
 // 通过读取webpack打包的结果获取server端bundle
 const serverCompiler = webpack(serverConfig)
+// 指定webpack配置项
 serverCompiler.outputFileSystem = mfs
 // 监听entry依赖的文件的变化  一旦有变化 会重新打包
 let serverBundle
