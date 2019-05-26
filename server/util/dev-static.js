@@ -1,3 +1,10 @@
+/*
+ * @Description: 文件描述
+ * @Author: qianxuemin001
+ * @Date: 2018-12-16 13:13:27
+ * @LastEditTime: 2019-05-26 13:54:55
+ * @LastEditors: qianxuemin001
+ */
 const axios = require('axios')
 const webpack = require('webpack')
 const path = require('path')
@@ -38,12 +45,12 @@ serverCompiler.watch({}, (err, stats) => {
   )
   const bundle = mfs.readFileSync(bundlePath, 'utf-8')
   const m = new Module()
-  m._compile(bundle, 'server-entry.js')
+  m._compile(bundle, 'server-entry.js')// 第二个参数指定bundle文件的名字
   serverBundle = m.exports.default
 })
 
 module.exports = function (app) {
-  // 通过中间件代理的方式 把静态文件代理到dev-server启动的服务上
+  // 通过中间件代理的方式 把静态文件代理到dev-server启动的服务上 内存中读取静态资源
   app.use('/public', proxy({
     target: 'http://localhost:8888'
   }))

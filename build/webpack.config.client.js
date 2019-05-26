@@ -1,3 +1,10 @@
+/*
+ * @Description: 文件描述
+ * @Author: qianxuemin001
+ * @Date: 2018-12-16 00:30:55
+ * @LastEditTime: 2019-05-26 11:54:10
+ * @LastEditors: qianxuemin001
+ */
 const path = require('path')
 const HTMLWebpackPlugin = require('html-webpack-plugin')
 const webpack = require('webpack')
@@ -42,7 +49,7 @@ if (isDev) {
       errors: true
     },
     publicPath: '/public', // 表明访问静态资源都要通过/public
-    historyApiFallback: {
+    historyApiFallback: { // 凡是不存在的路由都返回index.html
       index: '/public/index.html'
     },
     proxy: {
