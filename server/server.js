@@ -2,7 +2,7 @@ const express = require('express')
 const ReactSSR = require('react-dom/server')
 const favicon = require('serve-favicon')
 
-const bodyParser = require('body-parser')
+const bodyParser = require('body-parser');
 const session = require('express-session')
 
 const fs = require('fs')
