@@ -1,3 +1,10 @@
+/*
+ * @Description: 文件描述
+ * @Author: qianxuemin001
+ * @Date: 2018-12-16 01:55:48
+ * @LastEditTime: 2019-05-26 14:53:39
+ * @LastEditors: qianxuemin001
+ */
 const express = require('express')
 const ReactSSR = require('react-dom/server')
 const favicon = require('serve-favicon')
