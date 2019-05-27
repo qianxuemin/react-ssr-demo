@@ -1,11 +1,18 @@
+/*
+ * @Description: 文件描述
+ * @Author: qianxuemin001
+ * @Date: 2018-12-16 22:12:16
+ * @LastEditTime: 2019-05-26 20:44:18
+ * @LastEditors: qianxuemin001
+ */
 const router = require('express').Router()
 const axios = require('axios')
 
-const baseUrl = 'http://cnodejs.org/api/v1'
+const baseUrl = 'https://cnodejs.org/api/v1'
 
 router.post('/login', function (req, res, next) {
   console.log(999)
-  axios.post(`${baseUrl}/accesstoken`, {
+  axios.post(`${baseUrl}/accesstoken `, {
     accesstoken: req.body.accessToken
   }).then(resp => {
     if (resp.status === 200 && resp.data.success) {

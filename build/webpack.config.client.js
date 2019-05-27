@@ -2,7 +2,7 @@
  * @Description: 文件描述
  * @Author: qianxuemin001
  * @Date: 2018-12-16 00:30:55
- * @LastEditTime: 2019-05-26 11:54:10
+ * @LastEditTime: 2019-05-27 01:40:34
  * @LastEditors: qianxuemin001
  */
 const path = require('path')
@@ -26,6 +26,10 @@ const config = webpackMerge(baseConfig, {
   plugins: [
     new HTMLWebpackPlugin({
       template: path.join(__dirname, '../client/template.html')
+    }),
+    new HTMLWebpackPlugin({
+      template: '!!ejs-compiled-loader!' + path.join(__dirname, '../client/server.template.ejs'),
+      filename: 'server.ejs'
     })
   ]
 
@@ -52,7 +56,7 @@ if (isDev) {
     historyApiFallback: { // 凡是不存在的路由都返回index.html
       index: '/public/index.html'
     },
-    proxy: {
+    proxy: { // 将前端请求转发 由node获取数据
       '/api': 'http://localhost:3333'
     }
   }

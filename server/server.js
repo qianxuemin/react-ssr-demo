@@ -2,14 +2,14 @@
  * @Description: 文件描述
  * @Author: qianxuemin001
  * @Date: 2018-12-16 01:55:48
- * @LastEditTime: 2019-05-26 14:53:39
+ * @LastEditTime: 2019-05-26 19:43:35
  * @LastEditors: qianxuemin001
  */
 const express = require('express')
 const ReactSSR = require('react-dom/server')
 const favicon = require('serve-favicon')
 
-const bodyParser = require('body-parser');
+const bodyParser = require('body-parser')
 const session = require('express-session')
 
 const fs = require('fs')
@@ -27,7 +27,7 @@ app.use(bodyParser.urlencoded({ extended: false }))
 app.use(session({
   maxAge: 10 * 60 * 1000, // session 保持10分钟
   name: 'tid', // session放到浏览器端的cookieID
-  resave: false, // 是否每次请求都要重新申请cookieID
+  resave: false, // 是否每次请求都要重新生成cookieID
   saveUninitialized: false,
   secret: 'react cnode class' // 用它去加密cookie，以确保cookie在浏览器端不能被解密
 }))

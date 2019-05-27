@@ -1,3 +1,10 @@
+/*
+ * @Description: 文件描述
+ * @Author: qianxuemin001
+ * @Date: 2018-12-16 22:26:43
+ * @LastEditTime: 2019-05-26 21:27:13
+ * @LastEditors: qianxuemin001
+ */
 
 // 代理请求 cnode api 一定要放到服务端渲染之前
 const axios = require('axios')

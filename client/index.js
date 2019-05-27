@@ -1,17 +1,27 @@
+/*
+ * @Description: 文件描述
+ * @Author: qianxuemin001
+ * @Date: 2018-12-16 00:41:38
+ * @LastEditTime: 2019-05-27 23:50:58
+ * @LastEditors: qianxuemin001
+ */
 import React from 'react'
 import ReactDOM from 'react-dom'
 import { BrowserRouter } from 'react-router-dom'
-import App from './views/App.jsx'// eslint-disable-line
 import { Provider } from 'mobx-react'
 import { AppContainer } from 'react-hot-loader'// eslint-disable-line
+import App from './views/App.jsx'// eslint-disable-line
 
-import appState from './store/app-state'
+import AppState from './store/app-state'
+
+const initialState = window.__INITIAL__STATE__ || {} // eslint-disable-line
+
 // 热更新组件包裹
 const root = document.getElementById('root')
 const render = (Component) => {
   ReactDOM.hydrate(
     <AppContainer>
-      <Provider appState={appState}>
+      <Provider appState={new AppState(initialState.appState)}>
         <BrowserRouter>
           <Component />
         </BrowserRouter>

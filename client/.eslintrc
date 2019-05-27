@@ -21,7 +21,8 @@
     "no-trailing-spaces":[0],
     "lines-between-class-members":[0],
     "no-console":[0],
-    "react/require-default-props":[0]
+    "react/require-default-props":[0],
+    "react/destructuring-assignment":[0]
 
   }
 }

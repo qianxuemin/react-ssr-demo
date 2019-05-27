@@ -1,3 +1,10 @@
+<!--
+ * @Description: 文件描述
+ * @Author: qianxuemin001
+ * @Date: 2018-12-16 01:26:17
+ * @LastEditTime: 2019-05-26 23:24:43
+ * @LastEditors: qianxuemin001
+ -->
 # react-ssr-demo 服务端渲染小栗子
 
 ## 概述
@@ -24,7 +31,15 @@ npm run dev:server
 server 使用standard规范
 client 使用airbnb规范
 
+## 几个关键点
+服务端处理路由跳转
+redirect 的处理
+store数据同步给客户端
+
 
 ## 思考
 1. 工程搭建过程中会踩很多的坑，因为用到了非常多的工具，每个工具有自己特定的用法，如果有一步配置失败，找问题的过程都会非常困难，但是这是必须要经历的过程，只有走过这些坑，才能更好更快的解决工程中的问题
 2. 选择mobx是因为流程比redux更简洁
+
+## 接口地址
+https://cnodejs.org/api
