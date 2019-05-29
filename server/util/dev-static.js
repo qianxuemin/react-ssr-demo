@@ -2,7 +2,7 @@
  * @Description: 文件描述
  * @Author: qianxuemin001
  * @Date: 2018-12-16 13:13:27
- * @LastEditTime: 2019-05-29 08:44:02
+ * @LastEditTime: 2019-05-29 09:01:28
  * @LastEditors: qianxuemin001
  */
 const axios = require('axios')
@@ -15,6 +15,8 @@ const asyncBootStrap = require('react-async-bootstrapper') // commonjs2
 const ejs = require('ejs')
 const serialize = require('serialize-javascript')
 const serverConfig = require('../../build/webpack.config.server')
+// export import模式写的代码
+const Helmet = require('react-helmet').default // tdk帮助组件
 // 开发时从内存读取模板
 const getTemplate = () => {
   return new Promise((resolve, reject) => {
@@ -96,12 +98,18 @@ module.exports = function (app) {
           return
         }
         console.log('stores=', stores.appState.count)
+        const helmet = Helmet.rewind()
+
         // 服务端获取的需要 需要同步给客户端
         const state = getStoreState(stores)
         const content = ReactDomServer.renderToString(app)
         const html = ejs.render(template, {
           appString: content,
-          initialState: serialize(state)
+          initialState: serialize(state),
+          meta: helmet.meta.toString(),
+          title: helmet.title.toString(),
+          style: helmet.style.toString(),
+          link: helmet.link.toString()
         })
         res.send(html)
         // res.send(template.replace('<!-- app -->', content))

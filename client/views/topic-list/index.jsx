@@ -4,7 +4,9 @@ import {
   observer,
   inject
 } from 'mobx-react'
+import Helmet from 'react-helmet' // 一个组件
 import AppState from '../../store/app-state'
+
 // 注入state到组件 同时声明组件时observable的（值更新 组件也更新）
 
 @inject('appState')
@@ -39,6 +41,10 @@ class TopicList extends React.Component {
     const { appState } = this.props
     return (
       <div>
+        <Helmet>
+          <title>this is topic</title>
+          <meta name='description' content='this is description' />
+        </Helmet>
         <input type='text' onChange={this.changeName} />
         <p>This is topic list</p>
         <p>{appState.msg}</p>
