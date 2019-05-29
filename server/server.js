@@ -2,7 +2,7 @@
  * @Description: 文件描述
  * @Author: qianxuemin001
  * @Date: 2018-12-16 01:55:48
- * @LastEditTime: 2019-05-26 19:43:35
+ * @LastEditTime: 2019-05-30 00:40:42
  * @LastEditors: qianxuemin001
  */
 const express = require('express')
@@ -11,7 +11,7 @@ const favicon = require('serve-favicon')
 
 const bodyParser = require('body-parser')
 const session = require('express-session')
-
+const serverRender = require('./util//server-render')
 const fs = require('fs')
 // 引用文件最好使用绝对路径
 const path = require('path')
@@ -36,22 +36,25 @@ app.use('/api/user', require('./util/handle-login')) // cnode 登录
 app.use('/api', require('./util/proxy')) // 请求代理到cnode
 // 如果不是开发环境
 if (!isDev) {
-  const serverEntry = require('../dist/server-entry').default
+  const serverEntry = require('../dist/server-entry')
   // 同步读取模板
-  const template = fs.readFileSync(path.join(__dirname, '../dist/index.html'), 'utf-8')
+  const template = fs.readFileSync(path.join(__dirname, '../dist/server.ejs'), 'utf-8')
   // 用于区分返回静态资源还是服务端渲染的代码
   app.use('/public', express.static(path.join(__dirname, '../dist')))
 
   console.log('serverEntry=====>', serverEntry)
-  app.get('*', function (req, res) {
-    const appString = ReactSSR.renderToString(serverEntry)
-
-    res.send(template.replace('<!-- app -->', appString))
+  app.get('*', function (req, res, next) {
+    serverRender(serverEntry, template, req, res).catch(next)
   })
 } else {
   const devStatic = require('./util/dev-static')
   devStatic(app)
 }
+
+app.use(function (error, req, res, next) {
+  console.log(error)
+  res.status(500).send(error)
+})
 app.listen(3333, function () {
   console.log('server is listening on 3333')
 })
